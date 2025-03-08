@@ -133,7 +133,7 @@ function ModalLogin(props) {
           >
             <FaGoogle /> Entrar com o Google
           </button>
-          <GoogleLogin
+          {/* <GoogleLogin
             onSuccess={(data) => {
               logged(data.credential);
               localStorage.setItem('token', data.credential);
@@ -141,7 +141,7 @@ function ModalLogin(props) {
             onError={() => {
               console.log('Login Failed');
             }}
-          />
+          /> */}
         </form>
       </div>
     </Modal>

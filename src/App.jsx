@@ -15,8 +15,7 @@ function App() {
           newestOnTop={false}
           closeOnClick
           rtl={false}
-          pauseOn
-          Loss
+          pauseOnFocusLoss
           draggable
           pauseOnHover
           theme='light'

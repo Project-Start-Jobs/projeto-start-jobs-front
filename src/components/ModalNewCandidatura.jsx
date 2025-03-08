@@ -64,7 +64,7 @@ function ModalNewCandidatura(props) {
             Se inscreveu na vaga? Salve em suas candidaturas.
           </p>
         </div>
-        <form className='space-y-6' onSubmit={handleSubmit(onSubmit)}>
+        <form className='space-y-6 max-h-[70dvh] overflow-y-scroll' onSubmit={handleSubmit(onSubmit)}>
           <div>
             <label
               htmlFor='titulo'

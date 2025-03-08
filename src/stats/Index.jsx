@@ -1,13 +1,13 @@
 import Catho from '../assets/img/catho.png';
 import Empregos from '../assets/img/empregos-logo.png';
-import Google from '../assets/img/googleJobs.png';
-import Glassdoor from '../assets/img/glassdoor.png';
+import Google from '../assets/img/google.png';
+import Glassdoor from '../assets/img/glassdoor-logo.png';
 import Indeed from '../assets/img/indeed-logo.png';
 import InfoJobs from '../assets/img/infojobs-logo.png';
 import Jooble from '../assets/img/jooble-logo.png';
 import LinkedIn from '../assets/img/linkedin.png';
-import TrabalhaBrasil from '../assets/img/trabalhaBrasil.png';
-import Vagas from '../assets/img/vagas-com.png';
+import TrabalhaBrasil from '../assets/img/TrabalhaBrasil.png';
+import Vagas from '../assets/img/Vagas-com.png';
 
 export const topVagas = [
   {

@@ -41,8 +41,6 @@ function CandidaturaCard(props) {
       const isRejected = step.rejected;
 
       const isCurrent = step.id === currentStep && !step.rejected;
-      if (isCurrent) console.log(step);
-
       if (isCurrent || isRejected) {
         setEtapaAtual(step);
       }
@@ -69,7 +67,9 @@ function CandidaturaCard(props) {
 
   return (
     <>
-      <div className='py-6 px-6 lg:px-6 text-left relative bg-gray-50 rounded-lg border border-zinc-600 shadow-lg hover:border-blue-500 hover:scale-103 transition-all duration-200 dark:bg-[#151419]'>        <div className='flex flex-col xl:flex-row justify-between items-center lg:items-center gap-4 '>
+      <div className='py-6 px-6  lg:px-6 text-left relative bg-gray-50 rounded-lg border border-zinc-600 shadow-lg hover:border-blue-500 hover:scale-103 transition-all duration-200 dark:bg-[#151419]'>
+        {' '}
+        <div className='flex flex-col xl:flex-row justify-between items-center lg:items-center gap-4 '>
           <div className='flex flex-col items-center lg:items-start gap-3 w-full lg:w-max'>
             <h1 className='lg:max-w-80 text-base  2xl:text-lg font-semibold text-gray-900 dark:text-white'>
               {props.vaga.titulo} - {props.vaga.empresa}
@@ -110,8 +110,8 @@ function CandidaturaCard(props) {
       </div>
 
       {isModalOpen && (
-        <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50'>
-          <div className='bg-white dark:bg-[#151419] rounded-lg shadow-lg w-11/12 md:w-2/3 lg:w-1/2 p-6'>
+        <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 '>
+          <div className='bg-white dark:bg-[#151419] rounded-lg shadow-lg w-11/12 md:w-2/3 lg:w-1/2 p-6 '>
             <div className='flex justify-between items-center border-b pb-3'>
               <h2 className='text-xl font-semibold text-gray-900 dark:text-white'>
                 Detalhes da Candidatura
@@ -123,89 +123,95 @@ function CandidaturaCard(props) {
                 <X />
               </button>
             </div>
-            <div className='flex flex-col items-center'>
-              <h1 className='text-2xl font-bold dark:text-white'>Status</h1>
-              <p className='dark:text-zinc-400'>
-                Adicione as etapas do processo seletivo
-              </p>
-              <div
-                className={`flex items-center gap-2 mt-5 other-div ${
-                  isAccordionOpen ? 'hidden' : ''
-                }`}
-              >
-                <h1 className='font-bold text-zinc-600 dark:text-zinc-200 flex items-center gap-2'>
-                  Etapa Atual{' '}
-                  <ChevronRight
-                    className='text-zinc-800 dark:text-zinc-400'
-                    size={20}
-                  />
-                </h1>
-                <div className='flex items-center gap-2 '>
-                  {!etapaAtual.approved && !etapaAtual.rejected ? (
-                    <Loader className='text-blue-600 animate-spin' size={28} />
-                  ) : (
-                    <OctagonX className='text-red-500' size={28} />
-                  )}
-                  <h3
-                    className={`text-base font-bold cursor-pointer ${
-                      !etapaAtual.approved && !etapaAtual.rejected
-                        ? 'text-blue-600'
-                        : 'text-red-500'
-                    }`}
-                  >
-                    {etapaAtual.label}
-                  </h3>
-                </div>
-              </div>
-
-              <Accordion
-                type='single'
-                collapsible
-                value={isAccordionOpen ? 'item-1' : ''}
-                onValueChange={handleAccordionChange}
-              >
-                <AccordionItem value='item-1'>
-                  <AccordionTrigger
-                    className={
-                      ' rounded-lg px-4 border my-2 dark:text-zinc-50 dark:border-zinc-500  hover:border-blue-600'
-                    }
-                  >
-                    Ver todas as etapas
-                  </AccordionTrigger>
-                  <AccordionContent>
-                    <ProgressSteps
-                      idCandidatura={props.id}
-                      status={props.statusCandidatura}
-                      refreshJobs={props.refreshJobs}
+            <div className='max-h-[60dvh] overflow-y-scroll'>
+              <div className='flex flex-col items-center'>
+                <h1 className='text-2xl font-bold dark:text-white'>Status</h1>
+                <p className='dark:text-zinc-400'>
+                  Adicione as etapas do processo seletivo
+                </p>
+                <div
+                  className={`flex items-center gap-2 mt-5 other-div ${
+                    isAccordionOpen ? 'hidden' : ''
+                  }`}
+                >
+                  <h1 className='font-bold text-zinc-600 dark:text-zinc-200 flex items-center gap-2'>
+                    Etapa Atual{' '}
+                    <ChevronRight
+                      className='text-zinc-800 dark:text-zinc-400'
+                      size={20}
                     />
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
+                  </h1>
+                  <div className='flex items-center gap-2 '>
+                    {!etapaAtual.approved && !etapaAtual.rejected ? (
+                      <Loader
+                        className='text-blue-600 animate-spin'
+                        size={28}
+                      />
+                    ) : (
+                      <OctagonX className='text-red-500' size={28} />
+                    )}
+                    <h3
+                      className={`text-base font-bold cursor-pointer ${
+                        !etapaAtual.approved && !etapaAtual.rejected
+                          ? 'text-blue-600'
+                          : 'text-red-500'
+                      }`}
+                    >
+                      {etapaAtual.label}
+                    </h3>
+                  </div>
+                </div>
+
+                <Accordion
+                  type='single'
+                  collapsible
+                  value={isAccordionOpen ? 'item-1' : ''}
+                  onValueChange={handleAccordionChange}
+                >
+                  <AccordionItem value='item-1'>
+                    <AccordionTrigger
+                      className={
+                        ' rounded-lg px-4 border my-2 dark:text-zinc-50 dark:border-zinc-500  hover:border-blue-600'
+                      }
+                    >
+                      Ver todas as etapas
+                    </AccordionTrigger>
+                    <AccordionContent>
+                      <ProgressSteps
+                        idCandidatura={props.id}
+                        status={props.statusCandidatura}
+                        refreshJobs={props.refreshJobs}
+                      />
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+              </div>
+              <div className='mt-4 space-y-4'>
+                <p className='text-gray-700 dark:text-gray-300'>
+                  <strong>Título:</strong> {props.vaga.titulo}
+                </p>
+                <p className='text-gray-700 dark:text-gray-300'>
+                  <strong>Empresa:</strong> {props.vaga.empresa}
+                </p>
+                <p className='text-gray-700 dark:text-gray-300'>
+                  <strong>Localização:</strong> {props.vaga.localizacao}
+                </p>
+                <p className='text-gray-700 dark:text-gray-300'>
+                  <strong>Tipo de Trabalho:</strong> {props.vaga.modeloTrabalho}
+                </p>
+                <p className='text-gray-700 dark:text-gray-300'>
+                  <strong>Senioridade:</strong>{' '}
+                  {props.vaga.senioridade === 'mid_level'
+                    ? 'pleno'
+                    : props.vaga.senioridade}
+                </p>
+                <p className='text-gray-700 dark:text-gray-300 max-h-96 overflow-x-auto'>
+                  <strong>Descrição:</strong>{' '}
+                  {props.vaga.descricao || 'Descrição não fornecida.'}
+                </p>
+              </div>
             </div>
-            <div className='mt-4 space-y-4'>
-              <p className='text-gray-700 dark:text-gray-300'>
-                <strong>Título:</strong> {props.vaga.titulo}
-              </p>
-              <p className='text-gray-700 dark:text-gray-300'>
-                <strong>Empresa:</strong> {props.vaga.empresa}
-              </p>
-              <p className='text-gray-700 dark:text-gray-300'>
-                <strong>Localização:</strong> {props.vaga.localizacao}
-              </p>
-              <p className='text-gray-700 dark:text-gray-300'>
-                <strong>Tipo de Trabalho:</strong> {props.vaga.modeloTrabalho}
-              </p>
-              <p className='text-gray-700 dark:text-gray-300'>
-                <strong>Senioridade:</strong>{' '}
-                {props.vaga.senioridade === 'mid_level'
-                  ? 'pleno'
-                  : props.vaga.senioridade}
-              </p>
-              <p className='text-gray-700 dark:text-gray-300 max-h-96 overflow-x-auto'>
-                <strong>Descrição:</strong>{' '}
-                {props.vaga.descricao || 'Descrição não fornecida.'}
-              </p>
-            </div>
+
             <div className='flex flex-col items-center lg:flex-row justify-center mt-6 gap-3 lg:gap-10'>
               <button
                 onClick={() => setConfirmDelete(true)}
