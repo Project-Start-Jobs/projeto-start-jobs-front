@@ -1,8 +1,8 @@
 const DicasCVCard = ({ image, altText, title, description, url, onClick }) => {
   return (
     <div
-      className='max-w-[800px] mx-auto bg-[#F6F5F0] dark:bg-[#151419] rounded-2xl shadow-lg overflow-hidden border border-transparent dark:border-zinc-600 hover   dark:hover   hover:scale-103 transition-all duration-200'
-      onClick={onClick}
+    className='max-w-[800px] mx-auto bg-[#F6F5F0] dark:bg-[#151419] rounded-2xl shadow-lg overflow-hidden border border-transparent dark:border-zinc-600 hover:border-blue-500 dark:hover:border-blue-500 hover:scale-103 transition-all duration-200'
+    onClick={onClick}  
     >
       <img
         src={image}
