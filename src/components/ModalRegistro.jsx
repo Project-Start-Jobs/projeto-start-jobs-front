@@ -158,7 +158,7 @@ function ModalRegistro(props) {
               console.log('Registrar-se com o Google ainda não implementado')
             }
           >
-            <FaGoogle /> Registrar-se com o Goooutline-none focus:border-blue-700 dark:focus:border-blue-700 transition-colors duration-300gle
+            <FaGoogle /> Registrar-se com o Google
           </button>
         </form>
       </div>
